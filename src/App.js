@@ -7,12 +7,12 @@ import List from "./components/List/List";
 
 class App extends Component {
   state = { 
-    modalIsOpen: false
+    modalIsOpen: false,
+    isInit: true
   }
 
   showModal = () => {
-    console.log('hello wlrd');
-    this.setState({ modalIsOpen: true });
+    this.setState({ modalIsOpen: true, isInit: false });
   }
 
   closeModal = () => {
@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>React Animations</h1>
-        <Modal show={this.state.modalIsOpen} closed={this.closeModal} />
+        <Modal show={this.state.modalIsOpen} isInit={this.state.isInit} closed={this.closeModal} />
         <Backdrop show={this.state.modalIsOpen} onClick={this.closeModal} />
         <button className="Button" onClick={this.showModal}>Open Modal</button>
         <h3>Animating Lists</h3>

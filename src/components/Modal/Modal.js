@@ -2,8 +2,11 @@ import React from 'react';
 
 import classes from './Modal.module.scss';
 
-const Modal = props => {
-  const cssClasses = [classes.Modal, props.show ? classes.ModalOpen : classes.ModalClosed];
+const Modal = props => {  
+  let cssClasses = [classes.Modal, props.show ? classes.ModalOpen : classes.ModalClosed];
+  if (props.isInit){
+    cssClasses.push(classes.ModalInit);
+  }
 
   return (
     <div className={cssClasses.join(' ')}>
