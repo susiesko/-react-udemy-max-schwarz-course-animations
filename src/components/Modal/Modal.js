@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from './Modal.module.css';
+import classes from './Modal.module.scss';
 
 const Modal = props => {
   const cssClasses = [classes.Modal, props.show ? classes.ModalOpen : classes.ModalClosed];
