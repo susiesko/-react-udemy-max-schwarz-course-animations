@@ -1,23 +1,30 @@
 import React from 'react';
+import Transition from 'react-transition-group/Transition'
 
 import classes from './Modal.module.scss';
 
 const Modal = props => {  
-  let cssClasses = [classes.Modal, 
-    props.show === 'entering' 
-    ? classes.ModalOpen 
-    : props.show === 'exiting' 
-    ? classes.ModalClosed 
-    : null];
-  if (props.isInit){
-    cssClasses.push(classes.ModalInit);
-  }
-
   return (
-    <div className={cssClasses.join(' ')}>
-      <h1>A Modal</h1>
-      <button className="Button" onClick={props.closed}>Dismiss</button>
-    </div>
+    <Transition 
+      mouseOnEnter
+      unmountOnExit
+      in={props.show}
+      timeout={300}>{
+        state => {
+          let cssClasses = [classes.Modal, 
+            state === 'entering' 
+            ? classes.ModalOpen 
+            : state === 'exiting' 
+            ? classes.ModalClosed 
+            : null];
+          return (
+            <div className={cssClasses.join(' ')}>
+              <h1>A Modal</h1>
+              <button className="Button" onClick={props.closed}>Dismiss</button>
+            </div>
+          );
+        }
+      }</Transition>
   );
 }
 
