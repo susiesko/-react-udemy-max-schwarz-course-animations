@@ -59,6 +59,12 @@ class App extends Component {
         timeout={300}
         mouseOnEnter
         unmountOnExit
+        onEnter={() => console.log('onEnter')}
+        onEntering={() => console.log('onEntering')}
+        onEntered={() => console.log('onEntered')}
+        onExit={() => console.log('onExit')}
+        onExiting={() => console.log('onExiting')}
+        onExited={() => console.log('onExited')}
       >
         { this.blockTransitionHandler }
       </Transition>
@@ -67,6 +73,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>React Animations</h1>
+        <p><button className="Button" onClick={this.toggleClick}>Toggle</button></p>
+        {block}
         <Modal show={this.state.modalIsOpen} isInit={this.state.isInit} closed={this.closeModal} /> 
 
         { this.state.modalIsOpen 
