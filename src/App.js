@@ -38,6 +38,19 @@ class App extends Component {
     return <div style={blockStyle}>{state}</div>;
   }
 
+  transitionHandler = state => {
+    const blockStyle = {
+      backgroundColor: 'red', 
+      width: 100, 
+      height: 100, 
+      margin: 'auto',
+      opacity: state === 'exiting' || state === 'entering' ? 0 : 1,
+      transition: 'opacity 500ms ease-out'
+    };
+
+    return <Modal show={state} isInit={this.state.isInit} closed={this.closeModal} />;
+  }
+
   render() {
     const blockStyle = {
       backgroundColor: 'red', 
@@ -58,18 +71,26 @@ class App extends Component {
         { this.blockTransitionHandler }
       </Transition>
     );
+    const transition = (
+      <Transition 
+        mouseOnEnter
+        unmountOnExit
+        in={this.state.modalIsOpen}
+        timeout={300}>
+        { this.transitionHandler }
+      </Transition>
+    );
 
     return (
       <div className="App">
         <h1>React Animations</h1>
-        <p>
+        {/* <p>
           <button onClick={this.toggleClick}>Toggle</button>
-        </p>
-        { block }
-
-        { this.state.modalIsOpen 
+        </p> */}
+        { transition }
+        {/* { this.state.modalIsOpen 
           ? <Modal show={this.state.modalIsOpen} isInit={this.state.isInit} closed={this.closeModal} /> 
-          : null}
+          : null} */}
 
         { this.state.modalIsOpen 
           ? <Backdrop show={this.state.modalIsOpen} onClick={this.closeModal} />

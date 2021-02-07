@@ -3,7 +3,12 @@ import React from 'react';
 import classes from './Modal.module.scss';
 
 const Modal = props => {  
-  let cssClasses = [classes.Modal, props.show ? classes.ModalOpen : classes.ModalClosed];
+  let cssClasses = [classes.Modal, 
+    props.show === 'entering' 
+    ? classes.ModalOpen 
+    : props.show === 'exiting' 
+    ? classes.ModalClosed 
+    : null];
   if (props.isInit){
     cssClasses.push(classes.ModalInit);
   }
