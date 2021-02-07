@@ -1,35 +1,37 @@
-import React from 'react';
-import Transition from 'react-transition-group/Transition'
+import React, { useRef } from 'react';
+import CSSTransition from 'react-transition-group/CSSTransition';
 
-import classes from './Modal.module.scss';
+import './Modal.scss';
 
 const animationTiming = {
   enter: 400,
   exit: 2000
 }
 
-const Modal = props => {  
+const Modal = props => {
+  const nodeRef = useRef(null);
+
   return (
-    <Transition 
+    <CSSTransition 
       mouseOnEnter
       unmountOnExit
       in={props.show}
-      timeout={animationTiming}>{
+      timeout={animationTiming}
+      classNames={{
+        enter: '',
+        enterActive: 'ModalOpen',
+        exit: '',
+        exitActive: 'ModalClosed'
+      }}>{
         state => {
-          let cssClasses = [classes.Modal, 
-            state === 'entering' 
-            ? classes.ModalOpen 
-            : state === 'exiting' 
-            ? classes.ModalClosed 
-            : null];
           return (
-            <div className={cssClasses.join(' ')}>
+            <div className='Modal' ref={nodeRef}>
               <h1>A Modal</h1>
               <button className="Button" onClick={props.closed}>Dismiss</button>
             </div>
           );
         }
-      }</Transition>
+      }</CSSTransition>
   );
 }
 

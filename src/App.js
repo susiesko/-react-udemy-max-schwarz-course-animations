@@ -53,7 +53,7 @@ class App extends Component {
 
     //let block = <div style={blockStyle}></div>;
 
-    const block = (
+   /*  const block = (
       <Transition 
         in={this.state.showBlock}
         timeout={300}
@@ -68,13 +68,13 @@ class App extends Component {
       >
         { this.blockTransitionHandler }
       </Transition>
-    );
+    ); */
 
     return (
       <div className="App">
         <h1>React Animations</h1>
-        <p><button className="Button" onClick={this.toggleClick}>Toggle</button></p>
-        {block}
+        {/* <p><button className="Button" onClick={this.toggleClick}>Toggle</button></p>
+        {block} */}
         <Modal show={this.state.modalIsOpen} isInit={this.state.isInit} closed={this.closeModal} /> 
 
         { this.state.modalIsOpen 
