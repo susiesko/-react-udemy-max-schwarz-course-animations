@@ -6,6 +6,11 @@ import Modal from "./components/Modal/Modal";
 import Backdrop from "./components/Backdrop/Backdrop";
 import List from "./components/List/List";
 
+const animationTiming = {
+  enter: 400,
+  exit: 1000
+};
+
 class App extends Component {
   state = { 
     modalIsOpen: false,
@@ -51,7 +56,7 @@ class App extends Component {
     const block = (
       <Transition 
         in={this.state.showBlock}
-        timeout={1000}
+        timeout={300}
         mouseOnEnter
         unmountOnExit
       >
