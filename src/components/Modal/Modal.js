@@ -12,7 +12,8 @@ const Modal = props => {
   const nodeRef = useRef(null);
 
   return (
-    <CSSTransition 
+    <CSSTransition
+      nodeRef={nodeRef}
       mouseOnEnter
       unmountOnExit
       in={props.show}
